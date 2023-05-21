@@ -7,6 +7,9 @@ export const Metadata = () => {
   return (
     <Head>
       <title>{page.handle?.title || 'Vivid'}</title>
+      {page.handle?.description && (
+        <meta name="description" content={page.handle.description} />
+      )}
     </Head>
   );
 };

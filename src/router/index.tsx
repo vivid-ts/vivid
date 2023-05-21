@@ -15,7 +15,9 @@ import {
 
 export type Meta = {
   title?: string;
+  description?: string;
 };
+
 type Element = () => JSX.Element;
 type Module = {
   default: Element;

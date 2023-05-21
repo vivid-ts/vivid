@@ -13,4 +13,5 @@ export default function Test() {
 
 export const handle: Meta = {
   title: 'Test',
+  description: 'Test page',
 };
