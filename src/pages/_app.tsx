@@ -23,7 +23,16 @@ export default function App() {
     key: 'theme',
     defaultValue: 'light',
     getInitialValueInEffect: true,
+    serialize(value) {
+      return value;
+    },
+    deserialize(value: ColorScheme) {
+      return value;
+    },
   });
+
+  const toggleColorScheme = (value?: ColorScheme) =>
+    setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'));
 
   useEffect(() => {
     const html = document.querySelector('html');
@@ -35,9 +44,6 @@ export default function App() {
 
     html.classList.remove('dark');
   }, [colorScheme]);
-
-  const toggleColorScheme = (value?: ColorScheme) =>
-    setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'));
 
   return (
     <ColorSchemeProvider
