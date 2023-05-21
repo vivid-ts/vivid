@@ -12,8 +12,9 @@ import { useEffect } from 'react';
 import { Notifications } from '@mantine/notifications';
 import { ModalsProvider } from '@mantine/modals';
 import { Metadata } from '@/components/Metadata';
-import { mantineConfig } from '@/utils/theme/mantineConfig';
+import { mantineConfig } from '@/lib/theme/mantineConfig';
 import { Layout } from '@/layouts';
+import { initializeApp } from '@/lib/core/init';
 
 const cache = createEmotionCache({
   key: 'mantine',
@@ -35,6 +36,11 @@ export default function App() {
 
   const toggleColorScheme = (value?: ColorScheme) =>
     setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'));
+
+  // Init
+  useEffect(() => {
+    initializeApp();
+  }, []);
 
   useEffect(() => {
     const html = document.querySelector('html');

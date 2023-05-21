@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 /* eslint-disable @typescript-eslint/indent */
 // https://github.com/oedotme/generouted/blob/main/packages/generouted/src/react-router.tsx
 
@@ -70,7 +71,6 @@ const regularRoutes = generateRegularRoutes<RouteObject,() => Promise<Partial<Mo
 const App = preservedRoutes?._app || Outlet;
 const NotFound = preservedRoutes?.['404'] || Fragment;
 
-// eslint-disable-next-line react-refresh/only-export-components
 export const routes = [
   {
     element: <App />,
@@ -78,6 +78,6 @@ export const routes = [
   },
 ];
 
-const router = createBrowserRouter(routes);
+export const router = createBrowserRouter(routes);
 
 export const Routes = () => <RouterProvider router={router} />;
