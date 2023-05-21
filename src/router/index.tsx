@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/indent */
 // https://github.com/oedotme/generouted/blob/main/packages/generouted/src/react-router.tsx
 
 import { Fragment } from 'react';
@@ -34,29 +35,36 @@ const PRESERVED = import.meta.glob<Module>('/src/pages/(_app|404).{jsx,tsx}', {
 });
 const ROUTES = import.meta.glob<Module>(
   ['/src/pages/**/[\\w[-]*.{jsx,tsx}', '!**/(_app|404).*'],
-  { eager: true },
+  // { eager: true },
 );
 
 const preservedRoutes = generatePreservedRoutes<Element>(PRESERVED);
 
-const regularRoutes = generateRegularRoutes<RouteObject, Partial<Module>>(
-  ROUTES,
-  (module, key) => {
-    const index =
-      /index\.(jsx|tsx)$/.test(key) && !key.includes('pages/index')
-        ? { index: true }
-        : {};
+// eslint-disable-next-line prettier/prettier
+const regularRoutes = generateRegularRoutes<RouteObject,() => Promise<Partial<Module>>>(ROUTES, (module, key) => {
+  const index =
+    /index\.(jsx|tsx)$/.test(key) && !key.includes('pages/index')
+      ? { index: true }
+      : {};
 
-    return {
-      ...index,
-      Component: module?.default,
-      ErrorBoundary: module?.catch,
-      loader: module?.loader,
-      action: module?.action,
-      handle: module?.handle,
-    };
-  },
-);
+  return {
+    ...index,
+    // Component: module?.default,
+    // ErrorBoundary: module?.catch,
+    // loader: module?.loader,
+    // action: module?.action,
+    // handle: module?.handle,
+    lazy: async () => {
+      return {
+        Component: (await module())?.default,
+        ErrorBoundary: (await module())?.catch,
+        loader: (await module())?.loader,
+        action: (await module())?.action,
+        handle: (await module())?.handle,
+      };
+    },
+  };
+});
 
 // eslint-disable-next-line no-underscore-dangle
 const App = preservedRoutes?._app || Outlet;

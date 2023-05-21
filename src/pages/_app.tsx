@@ -9,6 +9,8 @@ import {
 } from '@mantine/core';
 import { useLocalStorage } from '@mantine/hooks';
 import { useEffect } from 'react';
+import { Notifications } from '@mantine/notifications';
+import { ModalsProvider } from '@mantine/modals';
 import { Metadata } from '@/components/Metadata';
 import { mantineConfig } from '@/utils/theme/mantineConfig';
 import { Layout } from '@/layouts';
@@ -60,9 +62,11 @@ export default function App() {
         withGlobalStyles
       >
         <HelmetProvider>
-          <Metadata />
-
-          <Layout />
+          <ModalsProvider>
+            <Metadata />
+            <Notifications />
+            <Layout />
+          </ModalsProvider>
         </HelmetProvider>
       </MantineProvider>
     </ColorSchemeProvider>
