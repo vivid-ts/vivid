@@ -1,9 +1,10 @@
-import { useCurrentPage } from "@/hooks/useCurrentPage";
-import { BlankLayout } from "./blank";
+import { useCurrentPage } from '@/hooks/useCurrentPage';
+import { BlankLayout } from './blank';
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const layouts = {
-  blank: BlankLayout
-}
+  blank: BlankLayout,
+};
 
 export const Layout = () => {
   const current = useCurrentPage();
@@ -11,5 +12,5 @@ export const Layout = () => {
 
   const Component = layouts[layout];
 
-  return <Component />
-}
+  return <Component />;
+};

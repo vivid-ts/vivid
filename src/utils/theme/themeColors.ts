@@ -1,5 +1,6 @@
-/* eslint-disable @typescript-eslint/indent */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
+/* eslint-disable @typescript-eslint/indent */
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import twConfig from '../../../tailwind.config';
@@ -11,25 +12,23 @@ const colors = twConfig!.theme!.extend!.colors as Record<
 >;
 
 type ColorInput = Record<string | number, string>;
+type ColorGroup = [
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+];
 
 export const formatTwToMantine = (twColor: ColorInput) => {
-  return (
-    Object.entries(twColor)
-      .filter(([key]) => key !== 'DEFAULT')
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      .map(([_, value]) => value) as [
-      string,
-      string,
-      string,
-      string,
-      string,
-      string,
-      string,
-      string,
-      string,
-      string,
-    ]
-  );
+  return Object.entries(twColor)
+    .filter(([key]) => key !== 'DEFAULT')
+    .map(([_, value]) => value) as ColorGroup;
 };
 
 export const themeColors = {
