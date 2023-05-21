@@ -1,14 +1,9 @@
-import { Button } from '@mantine/core';
-import { Link } from '@/router/utils';
+import { NotAvailable } from '@/layouts/not-available';
 
-// TODO: Add 404 page
 export default function NotFound() {
   return (
-    <section>
-      <h1>404</h1>
-      <Link to="/">
-        <Button>Go back</Button>
-      </Link>
-    </section>
+    <main className="w-screen h-screen flex flex-col">
+      <NotAvailable title="Not Found" description="Page not found" />
+    </main>
   );
 }
