@@ -1,6 +1,5 @@
 import '@fontsource/inter/latin.css';
 
-import { Outlet } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import {
   ColorScheme,
@@ -12,6 +11,7 @@ import { useLocalStorage } from '@mantine/hooks';
 import { useEffect } from 'react';
 import { Metadata } from '@/components/Metadata';
 import { mantineConfig } from '@/utils/theme/mantineConfig';
+import { Layout } from '@/layouts';
 
 const cache = createEmotionCache({
   key: 'mantine',
@@ -62,7 +62,7 @@ export default function App() {
         <HelmetProvider>
           <Metadata />
 
-          <Outlet />
+          <Layout />
         </HelmetProvider>
       </MantineProvider>
     </ColorSchemeProvider>

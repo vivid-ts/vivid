@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/indent */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import twConfig from '../../../tailwind.config';
 
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
