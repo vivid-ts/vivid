@@ -11,6 +11,8 @@ import { Navigate } from '@/router/utils';
 // eslint-disable-next-line react-refresh/only-export-components
 export const layouts = {
   blank: BlankLayout,
+  splash: SplashScreen,
+  notAvailable: NotAvailable,
 };
 
 export type Layouts = keyof typeof layouts;
