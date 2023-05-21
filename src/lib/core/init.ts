@@ -1,10 +1,14 @@
 import { useGlobalState } from '@/hooks/useGlobalState';
 import { useUser } from '@/hooks/useUser';
+import { resolve as resolveUser } from '@/plugins/auth';
 
 export const initializeApp = async () => {
-  const resolveUser = useUser.getState().fetch;
+  const user = await resolveUser();
 
-  await resolveUser();
+  useUser.setState({
+    loading: false,
+    data: user,
+  });
 
   useGlobalState.setState({
     loading: false,

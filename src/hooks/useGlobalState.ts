@@ -11,7 +11,6 @@ export const useGlobalState = create(
     },
     (set) => ({
       setLoading: (loading: boolean) => set({ loading }),
-
       setCurrentPage: (currentPage: Page | null) => set({ currentPage }),
     }),
   ),

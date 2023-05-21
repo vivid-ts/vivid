@@ -1,4 +1,3 @@
-/* eslint-disable react-refresh/only-export-components */
 import { Meta } from '@/router';
 import { Link } from '@/router/utils';
 

@@ -3,9 +3,15 @@ export type User = {
   name: string;
 };
 
+// Will run every initial load
+// Return null if not authenticated
+// Return user if authenticated
+// Throw error if something went wrong
 export const resolve = async () => {
-  return {
-    id: '1',
-    name: 'John Doe',
-  } as User;
+  return null;
+
+  // return {
+  //   id: '1',
+  //   name: 'John Doe',
+  // } as User;
 };

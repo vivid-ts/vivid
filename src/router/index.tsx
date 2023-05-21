@@ -1,4 +1,3 @@
-/* eslint-disable react-refresh/only-export-components */
 /* eslint-disable @typescript-eslint/indent */
 // https://github.com/oedotme/generouted/blob/main/packages/generouted/src/react-router.tsx
 
@@ -20,6 +19,7 @@ export type Meta = {
   description?: string;
 
   layout?: 'blank';
+  authedOnly?: boolean;
 };
 
 type Element = () => JSX.Element;
@@ -74,7 +74,18 @@ const NotFound = preservedRoutes?.['404'] || Fragment;
 export const routes = [
   {
     element: <App />,
-    children: [...regularRoutes, { path: '*', element: <NotFound /> }],
+    children: [
+      ...regularRoutes,
+      {
+        path: '*',
+        element: <NotFound />,
+        handle: {
+          title: 'Not found',
+          layout: 'blank',
+          authedOnly: false,
+        } satisfies Meta,
+      },
+    ],
   },
 ];
 
