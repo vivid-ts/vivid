@@ -12,6 +12,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@casl/ability": "^6.5.0",
     "@emotion/react": "^11.11.0",
     "@fontsource/inter": "^5.0.0",
     "@generouted/react-router": "^1.12.8",

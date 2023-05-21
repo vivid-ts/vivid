@@ -1,6 +1,7 @@
 import { Button } from '@mantine/core';
 import { Link } from '@/router/utils';
 
+// TODO: Add 404 page
 export default function NotFound() {
   return (
     <section>

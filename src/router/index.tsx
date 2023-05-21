@@ -8,11 +8,11 @@ import type {
   RouteObject,
   LoaderFunction,
 } from 'react-router-dom';
-
 import {
   generatePreservedRoutes,
   generateRegularRoutes,
 } from '@generouted/react-router/core';
+import type { Actions, Subjects } from '@/plugins/casl';
 
 export type Meta = {
   title?: string;
@@ -20,6 +20,12 @@ export type Meta = {
 
   layout?: 'blank';
   authedOnly?: boolean;
+  acl?:
+    | {
+        action?: Actions;
+        subject?: Subjects;
+      }
+    | false;
 };
 
 type Element = () => JSX.Element;
@@ -83,6 +89,7 @@ export const routes = [
           title: 'Not found',
           layout: 'blank',
           authedOnly: false,
+          acl: false,
         } satisfies Meta,
       },
     ],

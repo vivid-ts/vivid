@@ -13,4 +13,8 @@ export default function Test() {
 export const handle: Meta = {
   title: 'Test',
   description: 'Test page',
+  acl: {
+    action: 'read',
+    subject: 'test',
+  },
 };

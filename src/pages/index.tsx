@@ -1,4 +1,3 @@
-
 import { Button } from '@mantine/core';
 import type { Meta } from '@/router';
 import { Link } from '@/router/utils';
@@ -25,4 +24,5 @@ export default function Index() {
 
 export const handle: Meta = {
   title: 'Home',
+  acl: false,
 };

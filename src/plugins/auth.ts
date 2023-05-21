@@ -1,17 +1,26 @@
+import { Rules, ability } from './casl';
+
 export type User = {
   id: string;
   name: string;
+  abilities: Rules;
 };
 
 // Will run every initial load
 // Return null if not authenticated
 // Return user if authenticated
 // Throw error if something went wrong
+// Also, update ability here after fetching user
 export const resolve = async () => {
-  return null;
+  // return null;
 
-  // return {
-  //   id: '1',
-  //   name: 'John Doe',
-  // } as User;
+  const user: User = {
+    id: '1',
+    name: 'John Doe',
+    abilities: [{ action: 'read', subject: 'other' }],
+  };
+
+  ability.update(user.abilities);
+
+  return user;
 };
