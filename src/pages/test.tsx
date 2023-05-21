@@ -1,4 +1,4 @@
-import { Meta } from '@/router';
+import type { Meta } from '@/router';
 import { Link } from '@/router/utils';
 
 export default function Test() {

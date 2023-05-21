@@ -4,14 +4,16 @@ import { BlankLayout } from './blank';
 import { useGlobalState } from '@/hooks/useGlobalState';
 import { SplashScreen } from './splash';
 import { useUser } from '@/hooks/useUser';
-import { Navigate } from '@/router/utils';
 import { ability } from '@/plugins/casl';
 import { NotAvailable } from './not-available';
+import { Navigate } from '@/router/utils';
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const layouts = {
   blank: BlankLayout,
 };
+
+export type Layouts = keyof typeof layouts;
 
 export const Layout = () => {
   const globalLoading = useGlobalState((state) => state.loading);
@@ -30,6 +32,7 @@ export const Layout = () => {
   if (!userLoading && !user && (current.handle?.authedOnly ?? true)) {
     return <Navigate to="/login" />;
   }
+  // If user is logged in and user is not allowed to access the page, show not available page
   if (
     current.handle?.acl &&
     ability.cannot(

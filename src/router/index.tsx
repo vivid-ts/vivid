@@ -13,12 +13,13 @@ import {
   generateRegularRoutes,
 } from '@generouted/react-router/core';
 import type { Actions, Subjects } from '@/plugins/casl';
+import type { Layouts } from '@/layouts';
 
 export type Meta = {
   title?: string;
   description?: string;
 
-  layout?: 'blank';
+  layout?: Layouts;
   authedOnly?: boolean;
   acl?:
     | {

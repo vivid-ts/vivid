@@ -3,18 +3,18 @@ import { router } from '@/router';
 import { useGlobalState } from '@/hooks/useGlobalState';
 
 export const axios = Axios.create({
-  baseURL: 'http://localhost:8000/api', // import.meta.env.VITE_API_BASE_URL
+  baseURL: import.meta.env.VITE_API_BASE_URL,
 });
 
-axios.interceptors.request.use((config) => {
+axios.interceptors.request.use((c) => {
   const token = localStorage.getItem('token');
 
   if (token) {
     // eslint-disable-next-line no-param-reassign
-    config.headers.Authorization = `Bearer ${token}`;
+    c.headers.Authorization = `Bearer ${token}`;
   }
 
-  return config;
+  return c;
 });
 
 axios.interceptors.response.use(
