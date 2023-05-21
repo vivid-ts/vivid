@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable @typescript-eslint/indent */
+import type { DefaultMantineColor, Tuple } from '@mantine/core';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import twConfig from '../../../tailwind.config';
@@ -41,4 +42,13 @@ export const themeColors = {
   success: formatTwToMantine(colors!.success! as ColorInput),
   warning: formatTwToMantine(colors!.warning! as ColorInput),
   error: formatTwToMantine(colors!.error! as ColorInput),
-};
+} as const;
+
+declare module '@mantine/core' {
+  export interface MantineThemeColorsOverride {
+    colors: Record<
+      keyof typeof themeColors | DefaultMantineColor,
+      Tuple<string, 10>
+    >;
+  }
+}
