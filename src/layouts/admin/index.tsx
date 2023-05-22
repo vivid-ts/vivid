@@ -13,7 +13,7 @@ export const AdminLayout = ({
 }) => {
   return (
     <BlankLayout {...props} className="flex-row">
-      <aside className="w-full max-w-sm border-r dark:border-base-500">
+      <aside className="w-full max-w-sm border-r dark:border-base-500 bg-white dark:bg-base-700">
         <header className="flex items-center gap-5 justify-between p-6 border-b dark:border-base-500">
           <section className="flex items-center gap-5">
             <img src={brand.logo} width={48} />

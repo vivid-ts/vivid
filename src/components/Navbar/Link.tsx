@@ -23,8 +23,7 @@ export const NavbarLink = ({
         className={twMerge(
           clsx(
             'block p-4 text-accent-900 dark:text-base-50 w-full rounded-lg transition-colors duration-200',
-            active &&
-              'bg-accent-200 text-base-200 dark:text-zinc-200 dark:bg-base-500',
+            active && 'bg-accent-200 dark:text-zinc-200 dark:bg-base-500',
             !active && 'hover:bg-accent-100 dark:hover:bg-base-600',
           ),
         )}
