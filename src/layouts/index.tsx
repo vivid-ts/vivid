@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Outlet } from 'react-router-dom';
 import { useCurrentPage } from '@/hooks/useCurrentPage';
 import { BlankLayout } from './blank';
 import { useGlobalState } from '@/hooks/useGlobalState';
@@ -34,18 +35,27 @@ export const Layout = () => {
   if (!userLoading && !user && (current.handle?.authedOnly ?? true)) {
     return <Navigate to="/login" />;
   }
-  // If user is logged in and user is not allowed to access the page, show not available page
-  if (
-    current.handle?.acl &&
-    ability.cannot(
-      current.handle.acl.action ?? 'manage',
-      current.handle.acl.subject ?? 'all',
-    )
-  ) {
-    return <NotAvailable />;
-  }
+
+  const Render = () => {
+    // If user is logged in and user is not allowed to access the page, show not available page
+    if (
+      current.handle?.acl &&
+      ability.cannot(
+        current.handle.acl.action ?? 'manage',
+        current.handle.acl.subject ?? 'all',
+      )
+    ) {
+      return <NotAvailable />;
+    }
+
+    return <Outlet />;
+  };
 
   const Component = layouts[layout];
 
-  return <Component />;
+  return (
+    <Component>
+      <Render />
+    </Component>
+  );
 };

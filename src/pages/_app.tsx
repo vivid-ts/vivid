@@ -37,12 +37,7 @@ export default function App() {
   const toggleColorScheme = (value?: ColorScheme) =>
     setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'));
 
-  // Init
-  useEffect(() => {
-    initializeApp();
-  }, []);
-
-  useEffect(() => {
+  const setThemeClass = () => {
     const html = document.querySelector('html');
     if (!html) return;
 
@@ -51,6 +46,15 @@ export default function App() {
     }
 
     html.classList.remove('dark');
+  };
+
+  // Init
+  useEffect(() => {
+    initializeApp();
+  }, []);
+
+  useEffect(() => {
+    setThemeClass();
   }, [colorScheme]);
 
   return (
