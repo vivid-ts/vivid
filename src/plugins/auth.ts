@@ -17,7 +17,10 @@ export const resolve = async () => {
   const user: User = {
     id: '1',
     name: 'John Doe',
-    abilities: [{ action: 'read', subject: 'other' }],
+    abilities: [
+      { action: 'read', subject: 'other' },
+      { action: 'read', subject: 'test' },
+    ],
   };
 
   ability.update(user.abilities);

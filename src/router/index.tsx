@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/indent */
-// https://github.com/oedotme/generouted/blob/main/packages/generouted/src/react-router.tsx
+
+// https://github.com/oedotme/generouted/blob/main/packages/generouted/src/react-router-lazy.tsx
 
 import { Fragment } from 'react';
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
@@ -14,6 +15,7 @@ import {
 } from '@generouted/react-router/core';
 import type { Actions, Subjects } from '@/plugins/casl';
 import type { Layouts } from '@/layouts';
+import { Path } from './utils';
 
 export type Meta = {
   title?: string;
@@ -28,9 +30,17 @@ export type Meta = {
       }
     | false;
 };
+export type NavigationEntry = {
+  name: string;
+  children?: NavigationEntry[];
+  path?: Path;
+  acl?: Meta['acl'];
+  icon?: JSX.Element;
+  heading?: string;
+};
 
 type Element = () => JSX.Element;
-type Module = {
+export type Module = {
   default: Element;
   loader: LoaderFunction;
   action: ActionFunction;
@@ -41,15 +51,18 @@ type Module = {
 const PRESERVED = import.meta.glob<Module>('/src/pages/(_app|404).{jsx,tsx}', {
   eager: true,
 });
-const ROUTES = import.meta.glob<Module>(
-  ['/src/pages/**/[\\w[-]*.{jsx,tsx}', '!**/(_app|404).*'],
-  // { eager: true },
-);
+const ROUTES = import.meta.glob<Module>([
+  '/src/pages/**/[\\w[-]*.{jsx,tsx}',
+  '!**/(_app|404).*',
+]);
 
 const preservedRoutes = generatePreservedRoutes<Element>(PRESERVED);
 
 // eslint-disable-next-line prettier/prettier
-const regularRoutes = generateRegularRoutes<RouteObject,() => Promise<Partial<Module>>>(ROUTES, (module, key) => {
+const regularRoutes = generateRegularRoutes<
+  RouteObject,
+  () => Promise<Partial<Module>>
+>(ROUTES, (module, key) => {
   const index =
     /index\.(jsx|tsx)$/.test(key) && !key.includes('pages/index')
       ? { index: true }
@@ -57,11 +70,6 @@ const regularRoutes = generateRegularRoutes<RouteObject,() => Promise<Partial<Mo
 
   return {
     ...index,
-    // Component: module?.default,
-    // ErrorBoundary: module?.catch,
-    // loader: module?.loader,
-    // action: module?.action,
-    // handle: module?.handle,
     lazy: async () => {
       return {
         Component: (await module())?.default,

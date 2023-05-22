@@ -8,12 +8,14 @@ import { useUser } from '@/hooks/useUser';
 import { ability } from '@/plugins/casl';
 import { NotAvailable } from './not-available';
 import { Navigate } from '@/router/utils';
+import { AdminLayout } from './admin';
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const layouts = {
   blank: BlankLayout,
   splash: SplashScreen,
   notAvailable: NotAvailable,
+  admin: AdminLayout,
 };
 
 export type Layouts = keyof typeof layouts;
@@ -23,7 +25,7 @@ export const Layout = () => {
   const { data: user, loading: userLoading } = useUser();
 
   const current = useCurrentPage();
-  const layout = current.handle?.layout ?? 'blank';
+  const layout = current.handle?.layout ?? 'admin';
 
   useEffect(() => {
     useGlobalState.setState({ currentPage: current });
@@ -54,7 +56,7 @@ export const Layout = () => {
   const Component = layouts[layout];
 
   return (
-    <Component>
+    <Component page={current}>
       <Render />
     </Component>
   );
