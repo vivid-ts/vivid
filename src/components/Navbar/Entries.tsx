@@ -5,16 +5,21 @@ import { NavbarGroup } from './Group';
 import { cannot } from '@/lib/acl/cannot';
 import { canNavigateDeep } from '@/lib/acl/canNavigateDeep';
 
+export interface NavbarEntriesProps {
+  data: NavigationEntry[];
+  currentPath: string;
+  disableACL?: boolean;
+}
+
 export const NavbarEntry = ({
   entry,
   currentPath,
-}: {
-  entry: NavigationEntry;
-  currentPath: string;
-}) => {
+  disableACL,
+}: Omit<NavbarEntriesProps, 'data'> & { entry: NavigationEntry }) => {
   if (
-    (entry.acl && cannot(entry.acl)) ||
-    (entry.children && !canNavigateDeep(entry.children))
+    !disableACL &&
+    ((entry.acl && cannot(entry.acl)) ||
+      (entry.children && !canNavigateDeep(entry.children)))
   )
     return null;
 
@@ -25,6 +30,7 @@ export const NavbarEntry = ({
       {entry.children && (
         <NavbarGroup
           {...entry}
+          disableACL={disableACL}
           children={entry.children} // ts-lol
           currentPath={currentPath}
         />
@@ -45,13 +51,16 @@ export const NavbarEntry = ({
 export const NavbarEntries = ({
   data,
   currentPath,
-}: {
-  data: NavigationEntry[];
-  currentPath: string;
-}) => (
+  disableACL,
+}: NavbarEntriesProps) => (
   <>
     {data.map((entry) => (
-      <NavbarEntry entry={entry} currentPath={currentPath} key={entry.name} />
+      <NavbarEntry
+        disableACL={disableACL}
+        entry={entry}
+        currentPath={currentPath}
+        key={entry.name}
+      />
     ))}
   </>
 );

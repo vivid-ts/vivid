@@ -11,6 +11,7 @@ export interface NavbarGroupProps {
   icon?: JSX.Element;
 
   currentPath: string;
+  disableACL?: boolean;
 }
 
 export const NavbarGroup = ({
@@ -19,6 +20,7 @@ export const NavbarGroup = ({
   path,
   icon,
   currentPath,
+  disableACL,
 }: NavbarGroupProps) => {
   const navigate = useNavigate();
 
@@ -29,7 +31,11 @@ export const NavbarGroup = ({
       </Accordion.Control>
 
       <Accordion.Panel>
-        <NavbarEntries data={children} currentPath={currentPath} />
+        <NavbarEntries
+          data={children}
+          disableACL={disableACL}
+          currentPath={currentPath}
+        />
       </Accordion.Panel>
     </Accordion.Item>
   );
