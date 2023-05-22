@@ -17,7 +17,6 @@ export const ThemeSwitch = ({ iconSize = 20, ...props }: ThemeSwitchProps) => {
       variant="light"
       color="accent"
       onClick={() => toggleColorScheme()}
-      size="lg"
       {...props}
     >
       {colorScheme === 'dark' && <Moon weight="fill" size={iconSize} />}

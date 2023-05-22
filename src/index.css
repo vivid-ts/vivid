@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 #root {
-  @apply min-h-screen flex flex-col;
+  @apply min-h-screen flex flex-col text-base-500 dark:text-base-50;
 }
