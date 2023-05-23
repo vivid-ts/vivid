@@ -1,7 +1,9 @@
 import type {
   AccordionProps,
   ActionIconProps,
+  ButtonProps,
   MantineThemeOverride,
+  TextInputProps,
 } from '@mantine/core';
 import { themeColors } from './themeColors';
 
@@ -34,6 +36,22 @@ export const mantineConfig: MantineThemeOverride = {
         variant: 'light',
         size: 'lg',
       } as ActionIconProps,
+    },
+
+    Button: {
+      defaultProps: {
+        color: 'accent',
+      } as ButtonProps,
+    },
+
+    TextInput: {
+      defaultProps: {
+        color: 'blue',
+      } as TextInputProps,
+      classNames: {
+        label: 'mb-1 font-bold uppercase text-xs',
+        input: 'bg-base-800 aria-[invalid=false]:border-base-500',
+      } as TextInputProps['classNames'],
     },
   },
 };

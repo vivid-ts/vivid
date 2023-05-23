@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
-import { useCurrentPage } from '@/hooks/useCurrentPage';
+import { type Page, useCurrentPage } from '@/hooks/useCurrentPage';
 import { BlankLayout } from './blank';
 import { useGlobalState } from '@/hooks/useGlobalState';
 import { SplashScreen } from './splash';
@@ -20,6 +20,21 @@ export const layouts = {
 
 export type Layouts = keyof typeof layouts;
 
+const Render = ({ current }: { current: Page }) => {
+  // If user is logged in and user is not allowed to access the page, show not available page
+  if (
+    current.handle?.acl &&
+    ability.cannot(
+      current.handle.acl.action ?? 'manage',
+      current.handle.acl.subject ?? 'all',
+    )
+  ) {
+    return <NotAvailable />;
+  }
+
+  return <Outlet />;
+};
+
 export const Layout = () => {
   const globalLoading = useGlobalState((state) => state.loading);
   const { data: user, loading: userLoading } = useUser();
@@ -38,26 +53,11 @@ export const Layout = () => {
     return <Navigate to="/login" />;
   }
 
-  const Render = () => {
-    // If user is logged in and user is not allowed to access the page, show not available page
-    if (
-      current.handle?.acl &&
-      ability.cannot(
-        current.handle.acl.action ?? 'manage',
-        current.handle.acl.subject ?? 'all',
-      )
-    ) {
-      return <NotAvailable />;
-    }
-
-    return <Outlet />;
-  };
-
   const Component = layouts[layout];
 
   return (
     <Component page={current}>
-      <Render />
+      <Render current={current} />
     </Component>
   );
 };

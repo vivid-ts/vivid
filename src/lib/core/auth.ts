@@ -58,13 +58,15 @@ export const defineSignOut = (handler: () => PromiseLike<void>) => {
  *
  * @param handler The resolver function for the user.
  */
-export const defineSignIn = (handler: () => PromiseLike<User | null>) => {
-  const resolver = async () => {
+export const defineSignIn = <T extends object>(
+  handler: (options: T) => PromiseLike<User | null>,
+) => {
+  const resolver = async (options: T) => {
     useUser.setState({
       loading: true,
     });
 
-    const user = await handler();
+    const user = await handler(options);
 
     useUser.setState({
       loading: false,
