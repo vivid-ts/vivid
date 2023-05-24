@@ -7,6 +7,8 @@ import type {
 } from '@mantine/core';
 import { themeColors } from './themeColors';
 
+const colorTransition = 'transition-colors duration-200';
+
 export const mantineConfig: MantineThemeOverride = {
   fontFamily: 'Inter, sans-serif',
   colors: {
@@ -36,12 +38,18 @@ export const mantineConfig: MantineThemeOverride = {
         variant: 'light',
         size: 'lg',
       } as ActionIconProps,
+      classNames: {
+        root: colorTransition,
+      } as ActionIconProps['classNames'],
     },
 
     Button: {
       defaultProps: {
         color: 'accent',
       } as ButtonProps,
+      classNames: {
+        root: colorTransition,
+      } as ButtonProps['classNames'],
     },
 
     TextInput: {
