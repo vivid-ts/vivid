@@ -1,7 +1,7 @@
 import { Button } from '@mantine/core';
-import type { Meta } from '@/router';
 import { Link } from '@/router/utils';
 import { useUser } from '@/hooks/useUser';
+import type { HandleFunctionResolver } from '@/router';
 
 export default function Index() {
   const user = useUser((state) => state.data);
@@ -22,7 +22,7 @@ export default function Index() {
   );
 }
 
-export const handle: Meta = {
+export const Handle: HandleFunctionResolver = () => ({
   title: 'Home',
   acl: false,
-};
+});

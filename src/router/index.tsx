@@ -40,12 +40,14 @@ export type NavigationEntry = {
 };
 
 type Element = () => JSX.Element;
+export type HandleFunctionResolver = () => Meta;
+
 export type Module = {
   default: Element;
-  loader: LoaderFunction;
-  action: ActionFunction;
-  catch: Element;
-  handle: Meta;
+  Loader: LoaderFunction;
+  Action: ActionFunction;
+  Catch: Element;
+  Handle: HandleFunctionResolver;
 };
 
 const PRESERVED = import.meta.glob<Module>('/src/pages/(_app|404).{jsx,tsx}', {
@@ -71,12 +73,14 @@ const regularRoutes = generateRegularRoutes<
   return {
     ...index,
     lazy: async () => {
+      const resolvedModule = await module();
+
       return {
-        Component: (await module())?.default,
-        ErrorBoundary: (await module())?.catch,
-        loader: (await module())?.loader,
-        action: (await module())?.action,
-        handle: (await module())?.handle,
+        Component: resolvedModule.default,
+        ErrorBoundary: resolvedModule.Catch,
+        loader: resolvedModule.Loader,
+        action: resolvedModule.Action,
+        handle: resolvedModule.Handle?.(),
       };
     },
   };

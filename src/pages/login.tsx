@@ -1,7 +1,7 @@
 import { useForm } from '@mantine/form';
 import { Button, TextInput } from '@mantine/core';
 import { brand } from '@/config';
-import type { Meta } from '@/router';
+import type { HandleFunctionResolver } from '@/router';
 import { signIn } from '@/plugins/auth';
 
 export default function Login() {
@@ -51,8 +51,8 @@ export default function Login() {
   );
 }
 
-export const handle: Meta = {
+export const Handle: HandleFunctionResolver = () => ({
   title: 'Login',
   authedOnly: false,
   layout: 'blank',
-};
+});

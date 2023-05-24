@@ -1,4 +1,4 @@
-import type { Meta } from '@/router';
+import type { HandleFunctionResolver } from '@/router';
 import { Link } from '@/router/utils';
 
 export default function Test() {
@@ -10,11 +10,11 @@ export default function Test() {
   );
 }
 
-export const handle: Meta = {
+export const Handle: HandleFunctionResolver = () => ({
   title: 'Test',
   description: 'Test page',
   acl: {
     action: 'read',
     subject: 'test',
   },
-};
+});
