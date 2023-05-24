@@ -32,11 +32,17 @@ const user: User = {
 // Throw error if something went wrong
 // Also, update ability here after fetching user
 export const resolve = defineResolve(async () => {
+  await new Promise((res) => {
+    setTimeout(res, 5000);
+  });
+
+  if (localStorage.token && localStorage.token === user.name) {
+    ability.update(user.abilities);
+
+    return user;
+  }
+
   return null;
-
-  // ability.update(user.abilities);
-
-  // return user;
 });
 
 export const signOut = defineSignOut(async (usr) => {
@@ -47,6 +53,8 @@ export const signOut = defineSignOut(async (usr) => {
 });
 
 export const signIn = defineSignIn<SignInOptions>(async () => {
+  localStorage.setItem('token', user.name);
+
   // Sign in user here
   ability.update(user.abilities);
 
