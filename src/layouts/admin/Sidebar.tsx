@@ -5,6 +5,7 @@ import type { Page } from '@/hooks/useCurrentPage';
 import { brand, navigation } from '@/config';
 import { ThemeSwitch } from '@/components/ThemeSwitch';
 import { useUser } from '@/hooks/useUser';
+import { signOut } from '@/plugins/auth';
 
 export const Sidebar = ({ page }: { page: Page }) => {
   const { loading: userLoading, data: user } = useUser();
@@ -51,7 +52,7 @@ export const Sidebar = ({ page }: { page: Page }) => {
         </section>
 
         <ActionIcon color="red">
-          <SignOut weight="bold" size={20} />
+          <SignOut weight="bold" size={20} onClick={signOut} />
         </ActionIcon>
       </section>
     </aside>

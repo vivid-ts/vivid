@@ -3,8 +3,10 @@ import { Button, TextInput } from '@mantine/core';
 import { brand } from '@/config';
 import type { HandleFunctionResolver } from '@/router';
 import { signIn } from '@/plugins/auth';
+import { useNavigate } from '@/router/utils';
 
 export default function Login() {
+  const navigate = useNavigate();
   const form = useForm({
     initialValues: {
       name: '',
@@ -25,6 +27,8 @@ export default function Login() {
         password: 'Not allowed',
       });
     }
+
+    navigate('/');
   });
 
   return (

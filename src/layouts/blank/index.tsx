@@ -7,7 +7,7 @@ export const BlankLayout = ({
   page,
   ...props
 }: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
-  page: Page;
+  page?: Page;
 }) => {
   return (
     <main

@@ -15,7 +15,7 @@ export default function Index() {
         <Button color="accent">To go test</Button>
       </Link>
 
-      <Button>Dummy</Button>
+      <Button color="primary">Dummy</Button>
 
       <p>{JSON.stringify(user)}</p>
     </section>

@@ -34,13 +34,16 @@ export const defineResolve = (handler: () => PromiseLike<User | null>) => {
  *
  * @param handler The resolver function for the user.
  */
-export const defineSignOut = (handler: () => PromiseLike<void>) => {
+export const defineSignOut = (handler: (user: User) => PromiseLike<void>) => {
   const resolver = async () => {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const user = useUser.getState().data!;
+
     useUser.setState({
       loading: true,
     });
 
-    await handler();
+    await handler(user);
 
     useUser.setState({
       loading: false,
