@@ -32,10 +32,6 @@ const user: User = {
 // Throw error if something went wrong
 // Also, update ability here after fetching user
 export const resolve = defineResolve(async () => {
-  await new Promise((res) => {
-    setTimeout(res, 5000);
-  });
-
   if (localStorage.token && localStorage.token === user.name) {
     ability.update(user.abilities);
 

@@ -1,23 +1,19 @@
 import { Button } from '@mantine/core';
 import { Link } from '@/router/utils';
-import { useUser } from '@/hooks/useUser';
 import type { HandleFunctionResolver } from '@/router';
 
 export default function Index() {
-  const user = useUser((state) => state.data);
-
   return (
     <section>
-      <h1 className="text-5xl text-red-500 dark:text-red-400 mb-3">
-        Hello world
-      </h1>
-      <Link to="/test" className="mr-3">
-        <Button color="accent">To go test</Button>
-      </Link>
+      <h1 className="text-5xl mb-3">Hello world</h1>
 
-      <Button color="primary">Dummy</Button>
+      <section className="mb-3">
+        <Link to="/test" className="mr-3">
+          <Button color="accent">To go test</Button>
+        </Link>
 
-      <p>{JSON.stringify(user)}</p>
+        <Button color="primary">Dummy</Button>
+      </section>
     </section>
   );
 }

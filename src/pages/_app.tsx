@@ -11,10 +11,12 @@ import { useLocalStorage } from '@mantine/hooks';
 import { useEffect } from 'react';
 import { Notifications } from '@mantine/notifications';
 import { ModalsProvider } from '@mantine/modals';
+import { SWRConfig } from 'swr';
 import { Metadata } from '@/components/Metadata';
 import { mantineConfig } from '@/lib/theme/mantineConfig';
 import { Layout } from '@/layouts';
 import { initializeApp } from '@/lib/core/init';
+import { axios } from '@/plugins/axios';
 
 const cache = createEmotionCache({
   key: 'mantine',
@@ -58,27 +60,34 @@ export default function App() {
   }, [colorScheme]);
 
   return (
-    <ColorSchemeProvider
-      colorScheme={colorScheme}
-      toggleColorScheme={toggleColorScheme}
+    <SWRConfig
+      value={{
+        fetcher: (resource, init) =>
+          axios(resource, init).then((res) => res.data),
+      }}
     >
-      <MantineProvider
-        emotionCache={cache}
-        theme={{
-          colorScheme,
-          ...mantineConfig,
-        }}
-        withCSSVariables
-        withGlobalStyles
+      <ColorSchemeProvider
+        colorScheme={colorScheme}
+        toggleColorScheme={toggleColorScheme}
       >
-        <HelmetProvider>
-          <ModalsProvider>
-            <Metadata />
-            <Notifications />
-            <Layout />
-          </ModalsProvider>
-        </HelmetProvider>
-      </MantineProvider>
-    </ColorSchemeProvider>
+        <MantineProvider
+          emotionCache={cache}
+          theme={{
+            colorScheme,
+            ...mantineConfig,
+          }}
+          withCSSVariables
+          withGlobalStyles
+        >
+          <HelmetProvider>
+            <ModalsProvider>
+              <Metadata />
+              <Notifications />
+              <Layout />
+            </ModalsProvider>
+          </HelmetProvider>
+        </MantineProvider>
+      </ColorSchemeProvider>
+    </SWRConfig>
   );
 }
