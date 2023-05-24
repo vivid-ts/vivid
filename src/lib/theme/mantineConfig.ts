@@ -57,8 +57,10 @@ export const mantineConfig: MantineThemeOverride = {
         color: 'blue',
       } as TextInputProps,
       classNames: {
-        label: 'mb-1 font-bold uppercase text-xs',
-        input: 'bg-base-800 aria-[invalid=false]:border-base-500',
+        label:
+          'mb-1 font-bold uppercase text-xs text-base-300 dark:text-base-50',
+        input:
+          'bg-zinc-100 aria-[invalid=false]:border-zinc-300 dark:bg-base-800 dark:aria-[invalid=false]:border-base-500',
       } as TextInputProps['classNames'],
     },
   },

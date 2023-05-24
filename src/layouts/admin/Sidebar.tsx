@@ -11,7 +11,7 @@ export const Sidebar = ({ page }: { page: Page }) => {
   const { loading: userLoading, data: user } = useUser();
 
   return (
-    <aside className="w-full max-w-sm border-r dark:border-base-500 bg-white dark:bg-base-700 flex flex-col">
+    <aside className="w-full h-screen max-w-sm border-r dark:border-base-500 bg-white dark:bg-base-700 flex flex-col">
       <header className="flex items-center gap-5 justify-between p-6 border-b dark:border-base-500">
         <section className="flex items-center gap-5">
           <img src={brand.logo} width={48} />
@@ -40,7 +40,7 @@ export const Sidebar = ({ page }: { page: Page }) => {
           <img
             src={user?.image}
             alt="Profile"
-            className="w-16 rounded-xl drop-shadow-lg"
+            className="w-14 rounded-xl drop-shadow-lg"
           />
 
           <section>
