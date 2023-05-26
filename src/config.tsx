@@ -1,4 +1,4 @@
-import { House } from '@phosphor-icons/react';
+import { House, User } from '@phosphor-icons/react';
 import type { NavigationEntry } from './router';
 
 export const brand = {
@@ -15,5 +15,13 @@ export const navigation: NavigationEntry[] = [
       action: 'read',
       subject: 'other',
     },
+  },
+  {
+    heading: 'Data',
+
+    name: 'Users',
+    path: '/data/user',
+    icon: <User weight="fill" size={24} />,
+    acl: false,
   },
 ];

@@ -60,13 +60,13 @@ export const mantineConfig: MantineThemeOverride = {
         label:
           'mb-1 font-bold uppercase text-xs text-base-300 dark:text-base-50',
         input:
-          'bg-zinc-100 aria-[invalid=false]:border-zinc-300 dark:bg-base-800 dark:aria-[invalid=false]:border-base-500',
+          'bg-zinc-100 aria-[invalid=false]:border-zinc-300 dark:bg-base-800 dark:aria-[invalid=false]:border-base-500 px-3',
       } as TextInputProps['classNames'],
     },
 
     Card: {
       classNames: {
-        root: 'p-6 bg-accent-100 text-base-500 dark:text-base-50 dark:bg-base-500',
+        root: 'p-6 bg-accent-100 text-base-500 dark:text-base-50 dark:bg-base-600',
       },
     },
   },

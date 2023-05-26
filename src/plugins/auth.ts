@@ -1,5 +1,6 @@
 import { defineResolve, defineSignIn, defineSignOut } from '@/lib/core/auth';
 import { Rules, ability } from './casl';
+import { axios } from './axios';
 
 export type User = {
   id: string;
@@ -14,42 +15,32 @@ export type SignInOptions = {
   password: string;
 };
 
-// TODO: TEMPORARY, REMOVE WHEN UNUSED
-const user: User = {
-  id: '1',
-  name: 'John Doe',
-  role: 'admin',
-  image: 'https://i.pravatar.cc/300',
-  abilities: [
-    { action: 'read', subject: 'other' },
-    { action: 'read', subject: 'test' },
-  ],
-};
-
 // Will run every initial load
 // Return null if not authenticated
 // Return user if authenticated
 // Throw error if something went wrong
 // Also, update ability here after fetching user
 export const resolve = defineResolve(async () => {
-  if (localStorage.token && localStorage.token === user.name) {
-    ability.update(user.abilities);
+  // mocked user
+  const res = await axios.get<User>('/me');
+  const user = res.data;
 
-    return user;
-  }
+  ability.update(user.abilities);
 
-  return null;
+  return user;
 });
 
-export const signOut = defineSignOut(async (usr) => {
+export const signOut = defineSignOut(async (user) => {
   // Do something with user before actually logged out
 
   // eslint-disable-next-line no-console
-  console.log(usr);
+  console.log(user);
 });
 
-export const signIn = defineSignIn<SignInOptions>(async () => {
-  localStorage.setItem('token', user.name);
+export const signIn = defineSignIn<SignInOptions>(async (data) => {
+  // mocked user
+  const res = await axios.post<User>('/login', data);
+  const user = res.data;
 
   // Sign in user here
   ability.update(user.abilities);

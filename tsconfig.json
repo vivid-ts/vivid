@@ -21,11 +21,11 @@
 
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
       "@axios": ["src/plugins/axios"],
       "@auth": ["src/plugins/auth"],
       "@casl": ["src/plugins/casl"],
-      "@mock/register": ["src/@mock/index"],
+      "@mock": ["src/@mock/index"],
+      "@/*": ["src/*"],
     }
   },
   "include": ["src"],
