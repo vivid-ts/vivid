@@ -21,7 +21,10 @@
 
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@axios": ["src/plugins/axios"],
+      "@auth": ["src/plugins/auth"],
+      "@casl": ["src/plugins/casl"],
     }
   },
   "include": ["src"],
