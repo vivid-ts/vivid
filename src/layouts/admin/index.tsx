@@ -13,7 +13,7 @@ export const AdminLayout = ({
     <BlankLayout {...props} className="flex-row">
       <Sidebar page={page} />
 
-      <section className="flex-grow flex flex-col p-8">{children}</section>
+      <section className="flex-grow flex flex-col p-6">{children}</section>
     </BlankLayout>
   );
 };
