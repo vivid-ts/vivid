@@ -1,42 +1,17 @@
-import { Button } from '@mantine/core';
-import { MantineReactTable } from 'mantine-react-table';
-import { Link } from '@/router/utils';
+import { Card } from '@mantine/core';
 import type { HandleFunctionResolver } from '@/router';
-import { useUser } from '@/hooks/useUser';
 
 export default function Index() {
-  const user = useUser((s) => s.data);
-
   return (
-    <section>
-      <h1 className="text-5xl mb-3">Hello world</h1>
-
-      <section className="mb-3">
-        <Link to="/test" className="mr-3">
-          <Button color="accent">To go test</Button>
-        </Link>
-
-        <Button color="primary">Dummy</Button>
-      </section>
-
-      <MantineReactTable
-        data={[user!]}
-        columns={[
-          {
-            accessorKey: 'id',
-            header: '#',
-          },
-          {
-            accessorKey: 'name',
-            header: 'Name',
-          },
-          {
-            accessorKey: 'role',
-            header: 'Role',
-          },
-        ]}
-      />
-    </section>
+    <Card>
+      <h1 className="text-3xl font-semibold mb-2 dark:text-zinc-200">
+        Hey there!
+      </h1>
+      <p className="text-base-300 dark:text-base-50">
+        Welcome to <b>Vivid</b>! This is a starter template made using{' '}
+        <b>Vite + React + TS.</b>
+      </p>
+    </Card>
   );
 }
 

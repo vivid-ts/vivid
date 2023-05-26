@@ -1,5 +1,5 @@
-import { House, Tree, User } from '@phosphor-icons/react';
-import { NavigationEntry } from './router';
+import { House } from '@phosphor-icons/react';
+import type { NavigationEntry } from './router';
 
 export const brand = {
   name: 'Vivid',
@@ -15,23 +15,5 @@ export const navigation: NavigationEntry[] = [
       action: 'read',
       subject: 'other',
     },
-  },
-  {
-    heading: 'Others',
-
-    name: 'About',
-    icon: <Tree weight="fill" size={24} />,
-
-    children: [
-      {
-        name: 'Test',
-        path: '/test',
-        icon: <User weight="fill" size={24} />,
-        acl: {
-          action: 'read',
-          subject: 'test',
-        },
-      },
-    ],
   },
 ];

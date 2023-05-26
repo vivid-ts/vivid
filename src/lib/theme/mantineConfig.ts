@@ -63,5 +63,11 @@ export const mantineConfig: MantineThemeOverride = {
           'bg-zinc-100 aria-[invalid=false]:border-zinc-300 dark:bg-base-800 dark:aria-[invalid=false]:border-base-500',
       } as TextInputProps['classNames'],
     },
+
+    Card: {
+      classNames: {
+        root: 'p-6 bg-accent-100 text-base-500 dark:text-base-50 dark:bg-base-500',
+      },
+    },
   },
 };
