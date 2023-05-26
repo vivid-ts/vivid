@@ -1,11 +1,18 @@
 import { useForm } from '@mantine/form';
 import { Button, TextInput } from '@mantine/core';
+import { shallow } from 'zustand/shallow';
 import { brand } from '@/config';
 import type { HandleFunctionResolver } from '@/router';
 import { signIn } from '@/plugins/auth';
-import { useNavigate } from '@/router/utils';
+import { Navigate, useNavigate } from '@/router/utils';
+import { useUser } from '@/hooks/useUser';
 
 export default function Login() {
+  const [user, userLoading] = useUser(
+    (state) => [state.data, state.loading],
+    shallow,
+  );
+
   const navigate = useNavigate();
   const form = useForm({
     initialValues: {
@@ -19,9 +26,9 @@ export default function Login() {
   });
 
   const onSubmit = form.onSubmit(async (values) => {
-    const user = await signIn(values);
+    const u = await signIn(values);
 
-    if (!user) {
+    if (!u) {
       form.setErrors({
         name: 'Not allowed',
         password: 'Not allowed',
@@ -30,6 +37,10 @@ export default function Login() {
 
     navigate('/');
   });
+
+  if (!userLoading && user) {
+    return <Navigate to="/" />;
+  }
 
   return (
     <section className="flex-grow items-center justify-center flex flex-col">
