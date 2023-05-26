@@ -1,4 +1,4 @@
-import { ability } from '@/plugins/casl';
+import { ability } from '@casl';
 import type { Meta } from '@/router';
 
 export const cannot = (options?: Meta['acl']) => {

@@ -1,5 +1,5 @@
+import type { User } from '@auth';
 import { useUser } from '@/hooks/useUser';
-import { type User } from '@/plugins/auth';
 
 /**
  * Use this function to define the resolver function for the user.

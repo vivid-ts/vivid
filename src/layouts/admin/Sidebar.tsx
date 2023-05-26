@@ -1,11 +1,11 @@
 import { ActionIcon, LoadingOverlay } from '@mantine/core';
 import { SignOut } from '@phosphor-icons/react';
+import { signOut } from '@auth';
 import { Navbar } from '@/components/Navbar';
 import type { Page } from '@/hooks/useCurrentPage';
 import { brand, navigation } from '@/config';
 import { ThemeSwitch } from '@/components/ThemeSwitch';
 import { useUser } from '@/hooks/useUser';
-import { signOut } from '@/plugins/auth';
 
 export const Sidebar = ({ page }: { page: Page }) => {
   const { loading: userLoading, data: user } = useUser();

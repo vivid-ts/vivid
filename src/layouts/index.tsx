@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
+import { ability } from '@casl';
 import { type Page, useCurrentPage } from '@/hooks/useCurrentPage';
 import { BlankLayout } from './blank';
 import { useGlobalState } from '@/hooks/useGlobalState';
 import { SplashScreen } from './splash';
 import { useUser } from '@/hooks/useUser';
-import { ability } from '@/plugins/casl';
 import { NotAvailable } from './not-available';
 import { Navigate } from '@/router/utils';
 import { AdminLayout } from './admin';

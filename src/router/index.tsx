@@ -13,7 +13,7 @@ import {
   generatePreservedRoutes,
   generateRegularRoutes,
 } from '@generouted/react-router/core';
-import type { Actions, Subjects } from '@/plugins/casl';
+import type { Actions, Subjects } from '@casl';
 import type { Layouts } from '@/layouts';
 import { Path } from './utils';
 

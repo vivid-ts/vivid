@@ -12,11 +12,11 @@ import { useEffect } from 'react';
 import { Notifications } from '@mantine/notifications';
 import { ModalsProvider } from '@mantine/modals';
 import { SWRConfig } from 'swr';
+import { axios } from '@axios';
 import { Metadata } from '@/components/Metadata';
 import { mantineConfig } from '@/lib/theme/mantineConfig';
 import { Layout } from '@/layouts';
 import { initializeApp } from '@/lib/core/init';
-import { axios } from '@/plugins/axios';
 
 const cache = createEmotionCache({
   key: 'mantine',

@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { combine } from 'zustand/middleware';
-import type { User } from '@/plugins/auth';
+import type { User } from '@auth';
 
 export const useUser = create(
   combine(

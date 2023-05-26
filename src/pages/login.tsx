@@ -1,9 +1,9 @@
 import { useForm } from '@mantine/form';
 import { Button, TextInput } from '@mantine/core';
 import { shallow } from 'zustand/shallow';
+import { signIn } from '@auth';
 import { brand } from '@/config';
 import type { HandleFunctionResolver } from '@/router';
-import { signIn } from '@/plugins/auth';
 import { Navigate, useNavigate } from '@/router/utils';
 import { useUser } from '@/hooks/useUser';
 

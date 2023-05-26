@@ -25,6 +25,7 @@
       "@axios": ["src/plugins/axios"],
       "@auth": ["src/plugins/auth"],
       "@casl": ["src/plugins/casl"],
+      "@mock/register": ["src/@mock/index"],
     }
   },
   "include": ["src"],
