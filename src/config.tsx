@@ -3,7 +3,7 @@ import type { NavigationEntry } from './router';
 
 export const brand = {
   name: 'Vivid',
-  logo: '/vite.svg',
+  logo: '/vivid.svg',
 };
 
 export const navigation: NavigationEntry[] = [
