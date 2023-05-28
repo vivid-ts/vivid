@@ -1,5 +1,5 @@
 import { defineResolve, defineSignIn, defineSignOut } from '@/lib/core/auth';
-import { Rules, ability } from './casl';
+import { type Rules, ability } from './casl';
 import { axios } from './axios';
 
 export type User = {
