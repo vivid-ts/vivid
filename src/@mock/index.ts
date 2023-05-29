@@ -1,9 +1,9 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import type { AxiosInstance } from 'axios';
-import MockAdapter from 'axios-mock-adapter';
+import { setupWorker } from 'msw';
+import type { GraphQLHandler, RestHandler } from 'msw';
 
 type Module = {
-  default: (adapter: MockAdapter) => void;
+  default: (RestHandler | GraphQLHandler)[];
 };
 
 const modules = import.meta.glob<Module>(
@@ -13,25 +13,9 @@ const modules = import.meta.glob<Module>(
   },
 );
 
-export const registerMock = (axios: AxiosInstance) => {
-  const mock = new MockAdapter(axios, {
-    onNoMatch: 'passthrough',
-  });
+const handlers = Object.values(modules).reduce(
+  (prev, curr) => [...prev, ...curr.default],
+  [] as Module['default'],
+);
 
-  if (import.meta.env.PROD) {
-    // eslint-disable-next-line no-console
-    console.warn(
-      'Mocks are enabled in production! Will restore original responses.',
-    );
-
-    return mock.restore();
-  }
-
-  Object.entries(modules).forEach(([key, module]) => {
-    if (!module.default || typeof module.default !== 'function')
-      // eslint-disable-next-line no-console
-      return console.error(`Mock module must have a default function @ ${key}`);
-
-    module.default(mock);
-  });
-};
+export const worker = setupWorker(...handlers);

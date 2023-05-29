@@ -25,3 +25,4 @@ dist-ssr
 
 # Generated files
 src/router/utils.ts
+public/mockServiceWorker.js

@@ -1,13 +1,9 @@
 import Axios from 'axios';
-import { registerMock } from '@mock';
 import { router } from '@/router';
 import { useGlobalState } from '@/hooks/useGlobalState';
+import { api } from '@/config';
 
-export const axios = Axios.create({
-  // TODO: Configure this to your own API usage
-});
-
-registerMock(axios);
+export const axios = Axios.create(api.axios);
 
 axios.interceptors.request.use((c) => {
   const token = localStorage.getItem('token');

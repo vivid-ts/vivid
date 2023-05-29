@@ -1,5 +1,6 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import type { User } from '@auth';
-import type MockAdapter from 'axios-mock-adapter';
+import { rest } from 'msw';
 
 const data: User[] = [
   {
@@ -28,13 +29,16 @@ const data: User[] = [
   },
 ];
 
-export default (mock: MockAdapter) => {
-  mock.onGet('/user').reply(200, data);
-  mock.onGet('/user/1').reply(200, data[0]);
-  mock.onGet('/user/2').reply(200, data[1]);
-  mock.onGet('/user/3').reply(200, data[2]);
+export default [
+  rest.get('/api/user', (_, res, ctx) => {
+    return res(ctx.json(data));
+  }),
 
-  mock.onGet('/me').reply(200, data[0]);
+  rest.get('/api/me', (_, res, ctx) => {
+    return res(ctx.json(data[0]));
+  }),
 
-  mock.onPost('/login').reply(200, data[0]);
-};
+  rest.post('/api/login', (_, res, ctx) => {
+    return res(ctx.json(data[0]));
+  }),
+];

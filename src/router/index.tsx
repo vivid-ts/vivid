@@ -15,7 +15,6 @@ import {
 } from '@generouted/react-router/core';
 import type { Actions, Subjects } from '@casl';
 import type { Layouts } from '@/layouts';
-import { Path } from './utils';
 
 export type Meta = {
   title?: string;
@@ -29,14 +28,6 @@ export type Meta = {
         subject?: Subjects;
       }
     | false;
-};
-export type NavigationEntry = {
-  name: string;
-  children?: NavigationEntry[];
-  path?: Path;
-  acl?: Meta['acl'];
-  icon?: JSX.Element;
-  heading?: string;
 };
 
 type Element = () => JSX.Element;

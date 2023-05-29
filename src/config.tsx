@@ -1,12 +1,12 @@
 import { House, User } from '@phosphor-icons/react';
-import type { NavigationEntry } from './router';
+import type { API, Brand, Navigation } from './types/config';
 
-export const brand = {
+export const brand: Brand = {
   name: 'Vivid',
   logo: '/vivid.svg',
 };
 
-export const navigation: NavigationEntry[] = [
+export const navigation: Navigation = [
   {
     name: 'Home',
     path: '/',
@@ -25,3 +25,10 @@ export const navigation: NavigationEntry[] = [
     acl: false,
   },
 ];
+
+export const api: API = {
+  enableMocking: true,
+  axios: {
+    baseURL: '/api',
+  },
+};
