@@ -4,7 +4,7 @@ import { User } from '@auth';
 import { MantineReactTable } from 'mantine-react-table';
 import type { HandleFunctionResolver } from '@/router';
 
-export default function Index() {
+export default function DataUser() {
   const { data } = useSWR<User[]>('/user');
 
   return (
