@@ -1,12 +1,12 @@
-import type { NavigationEntry } from '@/router';
 import { NavbarHeading } from './Heading';
 import { NavbarLink } from './Link';
 import { NavbarGroup } from './Group';
 import { cannot } from '@/lib/acl/cannot';
 import { canNavigateDeep } from '@/lib/acl/canNavigateDeep';
+import type { Navigation, NavigationEntry } from '@/types/config';
 
 export interface NavbarEntriesProps {
-  data: NavigationEntry[];
+  data: Navigation;
   currentPath: string;
   disableACL?: boolean;
 }

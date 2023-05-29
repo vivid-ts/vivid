@@ -1,14 +1,14 @@
 import { Accordion, type AccordionProps } from '@mantine/core';
 import clsx from 'clsx';
-import type { NavigationEntry } from '@/router';
 import { NavbarEntries } from './Entries';
+import type { Navigation } from '@/types/config';
 
 export interface NavbarProps
   extends React.DetailedHTMLProps<
     React.HTMLAttributes<HTMLElement>,
     HTMLElement
   > {
-  data: NavigationEntry[];
+  data: Navigation;
   currentPath: string;
   accordionProps?: AccordionProps<true>;
   disableACL?: boolean;

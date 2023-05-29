@@ -1,12 +1,12 @@
 import { Accordion } from '@mantine/core';
 import { useNavigate } from 'react-router-dom';
-import type { NavigationEntry } from '@/router';
 import type { Path } from '@/router/utils';
 import { NavbarEntries } from './Entries';
+import type { Navigation } from '@/types/config';
 
 export interface NavbarGroupProps {
   name: string;
-  children: NavigationEntry[];
+  children: Navigation;
   path?: Path;
   icon?: JSX.Element;
 
