@@ -3,8 +3,12 @@ import type {
   ActionIconProps,
   ButtonProps,
   MantineThemeOverride,
+  PaginationProps,
+  TabsProps,
   TextInputProps,
+  TooltipProps,
 } from '@mantine/core';
+import clsx from 'clsx';
 import { themeColors } from './themeColors';
 
 const colorTransition = 'transition-colors duration-200';
@@ -68,6 +72,37 @@ export const mantineConfig: MantineThemeOverride = {
       classNames: {
         root: 'p-6 bg-accent-100 text-base-500 dark:text-base-50 dark:bg-base-600',
       },
+    },
+
+    Tabs: {
+      classNames: {
+        tab: clsx(
+          colorTransition,
+          'dark:data-[active=true]:bg-base-500 dark:data-[active=true]:bg-opacity-75 data-[active=true]:bg-accent-100',
+          'dark:text-base-50 text-base-500',
+          'first:rounded-tl-lg rounded-none last:rounded-tr-lg',
+        ),
+      } as TabsProps['classNames'],
+    },
+
+    Pagination: {
+      classNames: {
+        control: clsx(
+          colorTransition,
+          'border-none text-base-500 dark:text-base-50 font-medium',
+          'data-[active=true]:text-white dark:data-[active=true]:text-white',
+          'hover:bg-accent-100 dark:hover:bg-base-500',
+        ),
+      } as PaginationProps['classNames'],
+      defaultProps: {
+        color: 'accent',
+      } as PaginationProps,
+    },
+
+    Tooltip: {
+      classNames: {
+        tooltip: 'dark:bg-base-400 dark:text-white bg-accent-300 text-base-700',
+      } as TooltipProps['classNames'],
     },
   },
 };

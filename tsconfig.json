@@ -28,6 +28,6 @@
       "@/*": ["src/*"],
     }
   },
-  "include": ["src"],
+  "include": ["src", "src/components/.stories/Tooltip.stories.tsx", "src/components/.stories/Tabs.stories.tsx", "src/components/.stories/Popover.stories.tsx", "src/components/.stories/Pagination.stories.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
