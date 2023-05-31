@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#root {
+  @apply min-h-screen flex flex-col text-base-500 dark:text-base-50;
+}
+
+// Charts
+.apexcharts-canvas {
+  .apexcharts-legend {
+    @apply gap-2;
+  
+    .apexcharts-legend-series {
+      @apply flex items-center gap-1 #{!important};
+    }
+  }
+  
+  .apexcharts-toolbar {
+    div svg {
+      @apply dark:fill-base-300 fill-base-50 stroke-none transition-colors duration-200 #{!important};
+    }
+
+    div:hover svg {
+      @apply dark:fill-base-200 fill-base-200 #{!important};
+    }
+
+    div.apexcharts-selected svg {
+      @apply dark:fill-base-100 fill-accent-600 #{!important};
+    }
+  }
+
+  .apexcharts-tooltip {
+    @apply dark:bg-base-600;
+    @apply border dark:border-base-500;
+    @apply shadow-none;
+
+    .apexcharts-tooltip-title {
+      @apply dark:bg-base-800 dark:border-base-500 font-semibold;
+    }
+  }
+
+  .apexcharts-xaxistooltip {
+    @apply dark:bg-base-600 bg-zinc-50 rounded-md;
+    @apply dark:border-base-500 border-zinc-200;
+
+    &::after {
+      @apply dark:border-b-base-600 border-b-zinc-50 #{!important};
+    }
+
+    &::before {
+      @apply dark:border-b-base-500 border-b-zinc-200 #{!important};
+    }
+
+    .apexcharts-xaxistooltip-text {
+      @apply font-medium;
+    }
+  }
+}
