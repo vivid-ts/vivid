@@ -4,8 +4,8 @@ import ApexChart, { type Props as ApexChartProps } from 'react-apexcharts';
 import { themeColors } from '@/lib/theme/themeColors';
 
 export interface ChartProps extends ApexOptions {
-  width?: number;
-  height?: number;
+  width?: number | string;
+  height?: number | string;
   type: NonNullable<ApexChartProps['type']> | 'column';
   series: NonNullable<ApexChartProps['series']>;
   legend?: NonNullable<ApexOptions['legend']>;
@@ -14,6 +14,8 @@ export interface ChartProps extends ApexOptions {
   showToolbar?: boolean;
   showXGrid?: boolean;
   showYGrid?: boolean;
+  className?: string;
+  fullSize?: boolean;
 }
 
 export const Chart = ({
@@ -26,6 +28,8 @@ export const Chart = ({
   showToolbar = false,
   showXGrid = false,
   showYGrid = true,
+  className,
+  fullSize = false,
   ...options
 }: ChartProps) => {
   const { colorScheme } = useMantineColorScheme();
@@ -72,6 +76,16 @@ export const Chart = ({
           ...options.grid?.yaxis?.lines,
         },
       },
+      // Full size charts have no padding
+      ...(fullSize
+        ? {
+            padding: {
+              bottom: -15,
+              left: -10,
+              right: 0,
+            },
+          }
+        : {}),
     },
 
     dataLabels: {
@@ -161,6 +175,7 @@ export const Chart = ({
       width={width}
       height={height}
       options={combinedOptions}
+      className={className}
     />
   );
 };

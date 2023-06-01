@@ -2,6 +2,7 @@ import type {
   AccordionProps,
   ActionIconProps,
   ButtonProps,
+  CardProps,
   MantineThemeOverride,
   PaginationProps,
   TabsProps,
@@ -70,8 +71,11 @@ export const mantineConfig: MantineThemeOverride = {
 
     Card: {
       classNames: {
-        root: 'p-6 bg-accent-100 text-base-500 dark:text-base-50 dark:bg-base-600',
-      },
+        root: 'bg-accent-100 text-base-500 dark:text-base-50 dark:bg-base-600',
+      } as CardProps['classNames'],
+      defaultProps: {
+        padding: 'lg',
+      } as CardProps,
     },
 
     Tabs: {
