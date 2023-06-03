@@ -1,6 +1,6 @@
 import { ActionIcon, Button, Card, Image, Text } from '@mantine/core';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Money } from '@phosphor-icons/react';
+import { ArrowUp, Money, Tag } from '@phosphor-icons/react';
 import { Chart } from '../Charts';
 
 const meta: Meta = {
@@ -36,7 +36,7 @@ export const Default: StoryObj = {
   ),
 };
 
-export const WithGraph: StoryObj = {
+export const Graph: StoryObj = {
   render: () => (
     <Card>
       <section>
@@ -56,6 +56,83 @@ export const WithGraph: StoryObj = {
       <Card.Section>
         <Chart
           className="-mt-20"
+          width="100%"
+          height="100%"
+          series={[
+            {
+              name: 'Sales',
+              data: [30, 20, 50, 40],
+            },
+          ]}
+          chart={{
+            animations: {
+              enabled: false,
+            },
+            zoom: {
+              enabled: false,
+            },
+          }}
+          type="area"
+          fullSize
+          grid={{
+            show: false,
+          }}
+          xaxis={{
+            axisBorder: {
+              show: false,
+            },
+            axisTicks: {
+              show: false,
+            },
+            tooltip: {
+              enabled: false,
+            },
+            labels: {
+              show: false,
+            },
+          }}
+          yaxis={{
+            tooltip: {
+              enabled: false,
+            },
+            labels: {
+              show: false,
+            },
+          }}
+          tooltip={{
+            enabled: false,
+          }}
+        />
+      </Card.Section>
+    </Card>
+  ),
+};
+
+export const Stats: StoryObj = {
+  render: () => (
+    <Card>
+      <section className="flex gap-4 items-center mb-2">
+        <ActionIcon color="orange" radius="xl">
+          <Tag size={20} weight="fill" />
+        </ActionIcon>
+
+        <section>
+          <Text size="xl" className="font-bold dark:text-zinc-200">
+            Daily sales
+          </Text>
+
+          <section className="text-green-500 dark:text-green-400 flex items-center gap-1">
+            <ArrowUp weight="fill" />
+            <Text size="sm" className="font-medium">
+              +50%
+            </Text>
+          </section>
+        </section>
+      </section>
+
+      <Card.Section>
+        <Chart
+          className="-mt-16"
           width="100%"
           height="100%"
           series={[
