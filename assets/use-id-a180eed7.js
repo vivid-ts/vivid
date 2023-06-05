@@ -1,0 +1,2 @@
+import{r as e,R as u}from"./index-8db94870.js";const s=typeof document<"u"?e.useLayoutEffect:e.useEffect;function i(){return`mantine-${Math.random().toString(36).slice(2,11)}`}const c=u["useId".toString()]||(()=>{});function a(){const t=c();return t?`mantine-${t.replace(/:/g,"")}`:""}function f(t){const n=a(),[o,r]=e.useState(n);return s(()=>{r(i())},[]),typeof t=="string"?t:typeof window>"u"?n:o}export{s as a,i as r,f as u};
+//# sourceMappingURL=use-id-a180eed7.js.map

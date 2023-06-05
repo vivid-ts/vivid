@@ -1,0 +1,2 @@
+import{r as o,R as a}from"./index-8db94870.js";const r=o.createContext(null);function s(){const e=o.useContext(r);if(!e)throw new Error("useMantineColorScheme hook was called outside of context, make sure your app is wrapped with ColorSchemeProvider component");return e}function c({colorScheme:e,toggleColorScheme:t,children:n}){return a.createElement(r.Provider,{value:{colorScheme:e,toggleColorScheme:t}},n)}c.displayName="@mantine/core/ColorSchemeProvider";export{c as C,s as u};
+//# sourceMappingURL=ColorSchemeProvider-0d345655.js.map

@@ -1,0 +1,2 @@
+import{r as c,R as a}from"./index-8db94870.js";function d(o){const e=c.createContext(null);return[({children:t,value:n})=>a.createElement(e.Provider,{value:n},t),()=>{const t=c.useContext(e);if(t===null)throw new Error(o);return t}]}function x({value:o,defaultValue:e,finalValue:s,onChange:r=()=>{}}){const[t,n]=c.useState(e!==void 0?e:s),l=u=>{n(u),r==null||r(u)};return o!==void 0?[o,r,!0]:[t,l,!1]}export{d as c,x as u};
+//# sourceMappingURL=use-uncontrolled-665edddf.js.map
