@@ -12,7 +12,8 @@ jobs:
         with:
           node-version: 18
       - run: npm i
-      - run: npm run deploy-storybook
+      - run: |
+          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          npm run deploy-storybook
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
