@@ -10,8 +10,7 @@
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "mock:init": "npx msw init ./public --save",
-    "deploy-storybook": "npm run build-storybook && gh-pages -d storybook-static"
+    "mock:init": "npx msw init ./public --save"
   },
   "dependencies": {
     "@casl/ability": "^6.5.0",
