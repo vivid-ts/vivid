@@ -41,6 +41,7 @@
   },
   "devDependencies": {
     "@edqe/eslint-config": "latest",
+    "@storybook/addon-docs": "^7.1.1",
     "@storybook/addon-essentials": "^7.0.12",
     "@storybook/addon-interactions": "^7.0.12",
     "@storybook/addon-links": "^7.0.12",

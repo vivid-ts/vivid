@@ -6,6 +6,7 @@ const config: StorybookConfig = {
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
     '@storybook/addon-styling',
+    '@storybook/addon-docs',
     'storybook-dark-mode',
   ],
   framework: {
@@ -16,7 +17,7 @@ const config: StorybookConfig = {
     disableTelemetry: true,
   },
   docs: {
-    autodocs: 'tag',
+    autodocs: true,
   },
 };
 export default config;

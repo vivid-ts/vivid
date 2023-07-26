@@ -9,6 +9,7 @@ import {
 import { mantineConfig } from '../src/lib/theme/mantineConfig';
 import type { Preview } from '@storybook/react';
 import { useDarkMode } from 'storybook-dark-mode';
+import { themes } from '@storybook/theming';
 
 const cache = createEmotionCache({
   key: 'mantine',
@@ -43,6 +44,9 @@ const preview: Preview = {
         color: /(background|color)$/i,
         date: /Date$/,
       },
+    },
+    docs: {
+      theme: themes.dark,
     },
   },
 };
