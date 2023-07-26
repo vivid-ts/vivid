@@ -1,7 +1,8 @@
 name: deploy-storybook
 on:
-  release:
-    types: [published]
+  push:
+    branches:
+      - 'main'
 jobs:
   deploy:
     runs-on: ubuntu-latest
