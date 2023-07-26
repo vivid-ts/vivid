@@ -11,6 +11,10 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
+      - name: Set up git user
+        run: |
+          git config --global user.email "34704796+Edqe14@users.noreply.github.com"
+          git config --global user.name "Edqe14"
       - run: npm i
       - run: npm run deploy-storybook
         env:
